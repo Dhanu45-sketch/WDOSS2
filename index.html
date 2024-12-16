@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central Care Hospital</title>
+
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="./CSS/ResetStylesheet4.0.css">
+    <link rel="stylesheet" href="./CSS/MainCSS4.0.css">
+    <link rel="stylesheet" href="./CSS/PharmacyCSS4.0.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#1f0e5a">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <img src="./Images/Logo_Blue.webp" alt="Hospital Logo" class="logo" id="mainlogo">
+        <nav>
+            <!-- Mobile Navigation Menu -->
+            <ul class="sidebar">
+                <li onclick="hideSidebar()"><a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+                        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                    </svg></a>
+                </li>
+                <li><a href="./Home4.1.html">Home</a></li>
+                <li><a href="./AboutUs4.0.html">About Us</a></li>
+                <li><a href="./Services4.0.html">Our Services</a></li>
+                <li><a href="./Doctors4.0.html">Our Doctors</a></li>
+                <li><a href="./Reservations4.0.html">Appointments</a></li>
+                <li><a href="./Pharmacy4.0.html">Pharmacy</a></li>
+                <li><a href="./Contact-us4.0.html">Contact Us</a></li>
+            </ul>
+
+            <!-- Desktop Navigation Menu -->
+            <ul>
+                <li class="hideOnMobile"><a href="./Home4.1.html">Home</a></li>
+                <li class="hideOnMobile"><a href="./AboutUs4.0.html">About Us</a></li>
+                <li class="hideOnMobile"><a href="./Services4.0.html">Our Services</a></li>
+                <li class="hideOnMobile"><a href="./Doctors4.0.html">Our Doctors</a></li>
+                <li class="hideOnMobile"><a href="./Reservations4.0.html">Appointments</a></li>
+                <li class="hideOnMobile"><a href="./Pharmacy4.0.html">Pharmacy</a></li>
+                <li onclick="showSidebar()" class="menubutton"><a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+                    </svg></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="order-page">
+        <div class="order-form">
+            <h1>Online Pharmacy</h1>
+            <img class="imgpharma" src="./Images/mykenzie-johnson-5Hib8uDTm6g-unsplash.webp" alt="Medicine Vials">
+            <p  class="text">Please fill out the form below to order medicine.</p>
+            <br>
+
+            <!-- Drug Selection -->
+            <div class="container">
+                <div class="dropdown">
+                    <label  class="text" for="drugCategory">Select Drug Category:</label>
+                    <select id="drugCategory">
+                        <option value="">-- Select a category --</option>
+                        <option value="Analgesic">Analgesic</option>
+                        <option value="Antibiotic">Antibiotic</option>
+                        <option value="Antidepressant">Antidepressant</option>
+                        <option value="Antihistamine">Antihistamine</option>
+                        <option value="Antihypertensive">Antihypertensive</option>
+                    </select>
+                </div>
+
+                <!-- Drug Directory -->
+                <div class="directory" id="directory">
+                    <p>Select a category to view available drugs.</p>
+                </div>
+                <br>
+
+                <!-- Amount and Cart Buttons -->
+                <div class="amount-input">
+                    <label for="amount"  class="text">Enter Amount:</label>
+                    <input type="number" id="amount" min="1" value="1">
+                </div>
+                <div class="buttons">
+                    <button class="add" id="add">Add to Cart</button>
+                    <button class="order" id="order">Buy Now</button>
+                    <button class="clear" id="clear">Clear Cart</button>
+                </div>
+
+                <!-- Selected Drugs -->
+                <div class="cart">
+                    <h3>Selected Drugs</h3>
+                    <div id="selected2">
+                        <p>No items in the cart.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Warnings Section -->
+            <h4 id="h3">Important Warning for Patients Ordering Medications Online</h3>
+            <ol class="instructions">             
+                <li class="text"><strong>Consult Your Doctor:</strong> Do not order medications online without consulting your doctor.</li>
+                <li class="text"><strong>Delivery Time:</strong> Delivery times may vary. Plan accordingly.</li>
+                <li class="text"><strong>Health Risks:</strong> Misuse of medications can lead to severe health issues. Always follow medical advice.</li>
+            </ol>
+            <p>If you have any concerns, contact our customer service before completing your order.</p>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <img src="./Images/Logo_Blue.webp" alt="Hospital Logo" class="footerlogo">
+
+            <!-- Footer Navigation -->
+            <nav>
+                <ul class="ulfooter">
+                    <li><a href="./Home4.1.html">Home</a></li>
+                    <li><a href="./AboutUs4.0.html">About Us</a></li>
+                    <li><a href="./Services4.0.html">Our Services</a></li>
+                    <li><a href="./Doctors4.0.html">Our Doctors</a></li>
+                    <li><a href="./Reservations4.0.html">Appointments</a></li>
+                    <li><a href="./Pharmacy4.0.html">Pharmacy</a></li>
+                    <li><a href="./Contact-us4.0.html">Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <!-- Footer Contact Info -->
+            <section class="footer-contact">
+                <h2>Contact Information</h2>
+                <p><strong>Phone:</strong> 081-435657677</p>
+                <p><strong>Email:</strong> CCH.pvt@email.lk</p>
+                <p><strong>Hospital Management:</strong> Mr. Rajesh Perera</p>
+                <p><strong>Email:</strong> rajesh.perera@cch.lk</p>
+                <p><strong>Phone:</strong> 081-435657678</p>
+            </section>
+
+            <!-- Footer Social Links -->
+            <section class="footer-social">
+                <h2>Follow Us</h2>
+                <ul>
+                    <li><a href="#" class="social-icon"><img src="./Images/facebook_733547.webp" alt="Facebook"></a></li>
+                    <li><a href="#" class="social-icon"><img src="./Images/twitter_X_button.webp" alt="Twitter"></a></li>
+                    <li><a href="#" class="social-icon"><img src="./Images/instagram_2111463.webp" alt="Instagram"></a></li>
+                    <li><a href="#" class="social-icon"><img src="./Images/linkedin_button.webp" alt="LinkedIn"></a></li>
+                </ul>
+            </section>
+            <p>&copy; 2024 Central Care Hospital. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function showSidebar() {
+            document.querySelector('.sidebar').style.display = 'flex';
+        }
+        function hideSidebar() {
+            document.querySelector('.sidebar').style.display = 'none';
+        }
+    </script>
+    <script src="./main.js"></script>
+
+
+</body>
+
+</html>
+
+
+<!--
+  
+Cleveland Clinic, 2024. Cleveland Clinic. 
+Available at: https://my.clevelandclinic.org/
+
+Mayo Foundation for Medical Education and Research (MFMER), 2024.  
+Available at: https://www.mayoclinic.org/
+
+Suwasevana Hospitals (Pvt) Ltd, 2024. Suwasevana Hospitals. 
+Available at: https://suwasevana.lk/
+
+The General Hospital Corporation, 2024.
+Available at: https://www.massgeneral.org/
+
+2010-2024 Freepik Company
+Available at:https://www.freepik.com/
+
+1999-2024 W3Schools
+Available at: https://www.w3schools.com/
+
+2024 — CodePel
+Available at: https://www.codepel.com/
+
+iLoveIMG 2024
+Available at: https://www.iloveimg.com/
+
+2024 NVS ltd
+Available at: https://towebp.io/
+
+2024 Favicon
+Available at: https://realfavicongenerator.net/
+
+2024 unsplash
+Available at: https://unsplash.com/
+
+
+2024. Pinterest.
+Available at: https://www.pinterest.de/
+
+Codepip 2024, 2024. flexboxfroggy.com. 
+Codepip, 2024. cssgridgarden.com.  
+Available at: https://flexboxfroggy.com/
+Available at: https://cssgridgarden.com/
+
+Krossing, D., 2013. www.youtube.com/@Dani_Krossing.
+Available at: https://www.youtube.com/@Dani_Krossing
+ 
+--> 

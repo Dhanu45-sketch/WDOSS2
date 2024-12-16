@@ -1,2 +1,1 @@
-# WDOSS2
-CB015730 submission for sem 2 
+# Assignment_WDOS.github.io

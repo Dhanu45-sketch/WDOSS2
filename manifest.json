@@ -1,0 +1,47 @@
+{
+"name":"Central Care Hospital Lanka ",
+"short_name":"CCH",
+"start_url":"https://dhanu45-sketch.github.io/Assignment_WDOS.github.io/",
+"display":"standalone",
+"background_color":"#2EC6FE",
+"theme_color":"#8936FF",
+"orientation":"portrait-primary",
+
+"icons":
+    [{"purpose":"maskable",
+
+          "src":"icon512_maskable.png",
+          "type":"image/png",
+          "sizes":"512x512"},
+          
+     {"purpose":"any",
+     "sizes":"512x512",
+     "src":"icon512_rounded.png",
+     "type":"image/png"},
+
+    {"src":"android-chrome-192x192.png",
+          "type":"image/png",
+          "sizes":"192x192"},
+    {"src":"apple-touch-icon.png",
+          "type":"image/png",
+          "sizes":"180x180"},
+    {"src":"favicon-16x16.png",
+          "type":"image/png",
+          "sizes":"16x16"},
+    {"src":"favicon-32x32.png",
+          "type":"image/png",
+          "sizes":"32x32"},
+    {"src":"safari-pinned-tab.svg",
+          "type":"image/svg",
+          "sizes":"294.66x294.66"}
+                
+    
+    ],
+
+
+
+"dir":"auto",
+"lang":"en-US",
+
+
+"scope":"https://dhanu45-sketch.github.io/Assignment_WDOS.github.io/"}

@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="./CSS/OrderCSS.css">
+    
+     <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#1f0e5a">
+    <meta name="theme-color" content="#ffffff">
+
+
+</head>
+<body>
+    <div class="container">
+        <h1>Order Confirmation</h1>
+        <!-- Section for displaying the summary of the order -->
+        <div id="orderSummary" class="order-summary"></div>
+
+        <!-- Form fields for user details -->
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+            <label for="address">Delivery Address:</label>
+            <textarea id="address" placeholder="Enter your address"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="payment">Payment Method:</label>
+            <input type="text" id="payment" placeholder="Enter payment method">
+        </div>
+
+        <!-- Action buttons for payment and favourites management -->
+        <button id="pay" class="button">Pay</button>
+        <button id="saveFavourite" class="button">Add to Favourites</button>
+        <button id="applyFavourite" class="button">Apply Favourites</button>
+    </div>
+
+    <script>
+        // Retrieve order details from localStorage, or initialize an empty array
+        const orderDetails = JSON.parse(localStorage.getItem('orderDetails')) || [];
+        const favouritesKey = 'favouriteOrder'; // Key for saving favourite orders in localStorage
+
+        // DOM elements for interaction
+        const orderSummary = document.getElementById('orderSummary');
+        const payButton = document.getElementById('pay');
+        const saveFavouriteButton = document.getElementById('saveFavourite');
+        const applyFavouriteButton = document.getElementById('applyFavourite');
+
+        const nameField = document.getElementById('name');
+        const addressField = document.getElementById('address');
+        const paymentField = document.getElementById('payment');
+
+        // Function to display the order summary
+        function displayOrderDetails(order) {
+            orderSummary.innerHTML = ''; // Clear previous content
+
+            if (order.length === 0) {
+                orderSummary.innerHTML = '<p>No items in your order.</p>';
+                payButton.style.display = 'none'; // Hide the pay button if no items
+            } else {
+                payButton.style.display = 'inline-block'; // Ensure the pay button is visible
+                let total = 0;
+
+                // Display each item in the order
+                order.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'order-item';
+                    div.textContent = `${item.name} - $${item.price} (${item.amount} pcs)`;
+                    orderSummary.appendChild(div);
+                    total += item.price; // Accumulate total cost
+                });
+
+                // Display the total cost
+                const totalDiv = document.createElement('div');
+                totalDiv.className = 'order-item';
+                totalDiv.style.fontWeight = 'bold';
+                totalDiv.textContent = `Total: $${total}`;
+                orderSummary.appendChild(totalDiv);
+            }
+        }
+
+        // Function to validate user form inputs
+        function validateForm() {
+            if (!nameField.value.trim() || !addressField.value.trim() || !paymentField.value.trim()) {
+                alert('Please fill out all fields before proceeding.');
+                return false;
+            }
+            return true;
+        }
+
+        // Function to save the current order as a favourite in localStorage
+        function saveFavouriteOrder() {
+            if (orderDetails.length === 0) {
+                alert('No items in your order to save as favourite.');
+                return;
+            }
+            localStorage.setItem(favouritesKey, JSON.stringify(orderDetails));
+            alert('Order has been saved as a favourite.');
+        }
+
+        // Function to apply the saved favourite order
+        function applyFavouriteOrder() {
+            const favouriteOrder = JSON.parse(localStorage.getItem(favouritesKey));
+
+            if (!favouriteOrder) {
+                alert('No favourite order found.');
+                return;
+            }
+
+            displayOrderDetails(favouriteOrder); // Display the favourite order
+
+            // Optionally, prefill user details for favourites
+            nameField.value = 'John Doe'; // Example placeholder for favourite customer name
+            addressField.value = '123 Favourite St, Example City';
+            paymentField.value = 'Credit Card';
+        }
+
+        // Event listener for the Pay button
+        payButton.addEventListener('click', () => {
+            if (validateForm()) {
+                // Calculate delivery date (e.g., 5 days from now)
+                const deliveryDate = new Date();
+                deliveryDate.setDate(deliveryDate.getDate() + 5);
+
+                // Confirm the order and show the delivery date
+                alert(`Thank you for your purchase! Your order will be delivered by ${deliveryDate.toDateString()}.`);
+
+                // Clear the order details from localStorage and redirect
+                localStorage.removeItem('orderDetails');
+                location.href = 'index.html'; // Redirect to the main page
+            }
+        });
+
+        // Event listeners for saving and applying favourites
+        saveFavouriteButton.addEventListener('click', saveFavouriteOrder);
+        applyFavouriteButton.addEventListener('click', applyFavouriteOrder);
+
+        // Initialize the page with the current order details
+        displayOrderDetails(orderDetails);
+    </script>
+</body>
+</html>
+
+
+<!--
+  
+Cleveland Clinic, 2024. Cleveland Clinic. 
+Available at: https://my.clevelandclinic.org/
+
+Mayo Foundation for Medical Education and Research (MFMER), 2024.  
+Available at: https://www.mayoclinic.org/
+
+Suwasevana Hospitals (Pvt) Ltd, 2024. Suwasevana Hospitals. 
+Available at: https://suwasevana.lk/
+
+The General Hospital Corporation, 2024.
+Available at: https://www.massgeneral.org/
+
+2010-2024 Freepik Company
+Available at:https://www.freepik.com/
+
+1999-2024 W3Schools
+Available at: https://www.w3schools.com/
+
+2024 — CodePel
+Available at: https://www.codepel.com/
+
+iLoveIMG 2024
+Available at: https://www.iloveimg.com/
+
+2024 NVS ltd
+Available at: https://towebp.io/
+
+2024 Favicon
+Available at: https://realfavicongenerator.net/
+
+2024 unsplash
+Available at: https://unsplash.com/
+
+
+2024. Pinterest.
+Available at: https://www.pinterest.de/
+
+Codepip 2024, 2024. flexboxfroggy.com. 
+Codepip, 2024. cssgridgarden.com.  
+Available at: https://flexboxfroggy.com/
+Available at: https://cssgridgarden.com/
+
+Krossing, D., 2013. www.youtube.com/@Dani_Krossing.
+Available at: https://www.youtube.com/@Dani_Krossing
+ 
+--> 
