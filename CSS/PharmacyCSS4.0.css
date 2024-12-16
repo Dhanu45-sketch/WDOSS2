@@ -1,0 +1,185 @@
+/* Root variables for global styling */
+:root {
+    --background-color-light: #f9fafc; /* Updated lighter background */
+    --background-color-dark: #1f4172; /* Dark pastel blue */
+    --header-background: #f0f8ff; /* Alice Blue */
+    --text-color: #333333; /* Standard text color */
+    --nav-hover-color: #813cac; /* Purple for hover effects */
+    --footer-background: #dfe6ec; /* Brighter gray */
+    --footer-text-color: #333333;
+    --sidebar-background: rgba(125, 178, 224, 0.2); /* Transparent blue */
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Consistent shadow styling */
+    --button-primary-bg: #007bff; /* Blue button background */
+    --button-success-bg: #28a745; /* Green button background */
+    --button-danger-bg: #dc3545; /* Red button background */
+    --highlight-color: #3a9ed1; /* Highlight color */
+}
+
+/* Page structure and layout */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 5px;
+    padding: 30px;
+    background-color: var(--background-color-light);
+}
+.text{
+    color: var(--text-color);
+}
+/* Header styles */
+h1 {
+    text-align: center;
+    color: var(--text-color);
+    font-size: larger;
+}
+h4{
+    color: var(--button-danger-bg);
+}
+
+/* Order page styling */
+.order-page {
+    padding: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--background-color-dark); /* Dark background */
+    color: white;
+}
+
+.order-form {
+    margin-top: -20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow); /* Box shadow using root variable */
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group textarea,
+.dropdown select,
+.amount-input input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color:var(--nav-hover-color);
+}
+
+.dropdown,
+.amount-input {
+    margin-bottom: 20px;
+}
+
+/* Directory and cart styles */
+.directory,
+.cart {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+ 
+    background-color:var(--nav-hover-color);
+
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.directory .entry,
+.cart .cart-item {
+    padding: 10px;
+    border-bottom: 1px solid #fff1f1;
+    cursor: pointer;
+}
+
+.directory .entry:hover {
+    background-color: #e6adad;
+    border-radius: 3px;
+}
+
+/* Highlight and output styles */
+.highlight {
+    background-color: var(--highlight-color); /* Updated highlight color */
+    border-radius: 3px;
+}
+
+.output {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Button styling */
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.buttons button {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buttons .add {
+    background-color: var(--button-success-bg);
+}
+
+.buttons .order {
+    background-color: var(--button-primary-bg);
+}
+
+.buttons .clear {
+    background-color: var(--button-danger-bg);
+}
+
+/* Styling for images */
+.imgpharma {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: var(--box-shadow); /* Using consistent box-shadow variable */
+}
+
+/* Responsive Design */
+/* Large screens (Desktop) */
+@media (min-width: 1024px) {
+    .order-page {
+        padding: 40px;
+    }
+}
+
+/* Medium screens (Tablets) */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .order-page {
+        padding: 35px;
+    }
+}
+
+/* Small screens (Phones) */
+@media (max-width: 767px) {
+    .order-page {
+        padding: 20px;
+    }
+}
+
+/* Extra small screens (Small Phones) */
+@media (max-width: 480px) {
+    .order-page {
+        padding: 15px;
+    }
+
+    .form-group button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
